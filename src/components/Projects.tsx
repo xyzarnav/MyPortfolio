@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Github, ExternalLink, Calendar, Code, Star } from "lucide-react";
-import trustChainImg from "../assets/trustchain.png";
+import trustChainImg from "../assets/Trustchain.png";
 import arbitrageImg from "../assets/arbitage.png";
 import turfImg from "../assets/turf.png";
 import taskTrackerImg from "../assets/task-tracker.png"
