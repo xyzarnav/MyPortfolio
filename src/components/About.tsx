@@ -19,14 +19,14 @@ const About = () => {
     },
     {
       institution: "MNR School of Excellence",
-      degree: "HSC, Central Board of Secondary Education, Percentage: 72.6%",
+      degree: "HSC, Central Board of Secondary Education",
       period: "June 2020 - May 2022",
       location: "Kamothe, Maharashtra",
       description: "",
     },
     {
       institution: "Ryewood International School",
-      degree: "ICSE, Indian Certificate of Secondary Education, Percentage: 88%",
+      degree: "ICSE, Indian Certificate of Secondary Education",
       period: "March 2010 - July 2020",
       location: "Lonavala, Maharashtra",
       description: "",
