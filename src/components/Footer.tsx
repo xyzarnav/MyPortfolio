@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart, Code, Gamepad2 } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, Code, Gamepad2,Twitter } from 'lucide-react';
 import WordleGame from './WordleGame';
 
 const Footer = () => {
@@ -10,21 +10,23 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: Github,
-      href: "#",
+      href: "https://github.com/xyzarnav",
       label: "GitHub",
-      color: "hover:text-gray-900 dark:hover:text-white",
     },
     {
       icon: Linkedin,
-      href: "#",
+      href: "https://www.linkedin.com/in/arnav-yadav-56410329b/",
       label: "LinkedIn",
-      color: "hover:text-blue-600",
     },
     {
       icon: Mail,
-      href: "mailto:contact@example.com",
+      href: "mailto:arnav20604@gmail.com",
       label: "Email",
-      color: "hover:text-red-500",
+    },
+    {
+      icon: Twitter,
+      href: "https://x.com/ARNAV_xyzxyz", // <-- update to your actual Twitter handle
+      label: "Twitter",
     },
   ];
 
@@ -106,7 +108,7 @@ const Footer = () => {
                 href={social.href}
                 whileHover={{ scale: 1.2, y: -5 }}
                 whileTap={{ scale: 0.9 }}
-                className={`p-3 bg-white/10 dark:bg-black/10 backdrop-blur-sm rounded-full text-gray-600 dark:text-gray-400 ${social.color} transition-all duration-300 border border-white/20 dark:border-white/10 hover:border-white/40 dark:hover:border-white/20`}
+                className={`p-3 bg-white/10 dark:bg-black/10 backdrop-blur-sm rounded-full text-gray-600 dark:text-gray-400 transition-all duration-300 border border-white/20 dark:border-white/10 hover:border-white/40 dark:hover:border-white/20`}
                 aria-label={social.label}
               >
                 <social.icon size={24} />

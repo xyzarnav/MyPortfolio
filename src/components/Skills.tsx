@@ -12,6 +12,37 @@ const Skills = () => {
 
   const skillCategories = [
     {
+      title: "Web3",
+      color: "from-neon-green to-neon-cyan",
+      skills: [
+        {
+          name: "Ethereum",
+          level: 70,
+          description: "Smart contract interaction and DApp development",
+        },
+        {
+          name: "Web3.js",
+          level: 55,
+          description: "Blockchain integration and wallet connectivity",
+        },
+        {
+          name: "Solidity",
+          level: 70,
+          description: "Smart contract development fundamentals",
+        },
+        {
+          name: "Wagmi",
+          level: 50,
+          description: "Smart contract development Hooks",
+        },
+        {
+          name: "IPFS",
+          level: 45,
+          description: "Decentralized storage solutions",
+        },
+      ],
+    },
+    {
       title: "Frontend",
       color: "from-neon-cyan to-neon-blue",
       skills: [
@@ -77,32 +108,6 @@ const Skills = () => {
           name: "Firebase",
           level: 70,
           description: "Backend-as-a-service and real-time databases",
-        },
-      ],
-    },
-    {
-      title: "Web3 & Emerging Tech",
-      color: "from-neon-green to-neon-cyan",
-      skills: [
-        {
-          name: "Ethereum",
-          level: 60,
-          description: "Smart contract interaction and DApp development",
-        },
-        {
-          name: "Web3.js",
-          level: 55,
-          description: "Blockchain integration and wallet connectivity",
-        },
-        {
-          name: "Solidity",
-          level: 50,
-          description: "Smart contract development fundamentals",
-        },
-        {
-          name: "IPFS",
-          level: 45,
-          description: "Decentralized storage solutions",
         },
       ],
     },
