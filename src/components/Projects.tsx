@@ -38,6 +38,12 @@ const Projects = () => {
     triggerOnce: false,
   });
 
+  // Add inView for Crypto Arbitrage Bot video
+  const [arbitrageInViewRef, arbitrageInView] = useInView({
+    threshold: 0.3,
+    triggerOnce: false,
+  });
+
   // Add missing fields: featured, status, date, demo
   const projects: Project[] = [
     {
@@ -46,7 +52,7 @@ const Projects = () => {
       tech: ["Next.js", "React", "TailwindCSS", "Ethereum", "Solidity"],
       image: trustChainImg,
       demo: "https://player.cloudinary.com/embed/?cloud_name=dnyrdbyes&public_id=el2hpdqxszy4fuqe9zyk&profile=cld-default&player[autoplay]=true&player[muted]=true",
-      demoAvailable: true,
+      demoAvailable: false,
       github: "https://github.com/xyzarnav/trustchain",
       keyPoints: [
         "Transparent government bidding platform",
@@ -58,6 +64,24 @@ const Projects = () => {
       featured: true,
       status: "Completed",
       date: "2025",
+    }, {
+      title: "Crypto Arbitrage Bot",
+      category: "AI/ML",
+      tech: ["Node", "WebSockets", "Binance API", "TA-Lib"],
+      image: arbitrageImg,
+      demo: "https://686b88a2d9eff38d628ec9d9--arnavcryptoapp.netlify.app",
+      github: "https://github.com/xyzarnav/CryptoApp",
+      demoAvailable: false,
+      keyPoints: [
+        "500+ simulated trades",
+        "Real-time market data",
+        "5% test profit",
+      ],
+      description:
+        "High-frequency crypto trading bot exploiting price differences across exchanges, with real-time market data streaming and automated execution.",
+      featured: true,
+      status: "Completed",
+      date: "2024",
     },
     {
       title: "Task Tracker App",
@@ -77,27 +101,10 @@ const Projects = () => {
       description:
         "A modern, visually appealing task management app built with React, Vite, and Tailwind CSS. Features include live progress tracking, a theme toggle, and a username-based login system.",
       featured: true,
-      status: "Completed",
+      status: "Deployed",
       date: "2025",
     },
-    {
-      title: "Crypto Arbitrage Bot",
-      category: "AI/ML",
-      tech: ["Python", "WebSockets", "Binance API", "TA-Lib"],
-      image: arbitrageImg,
-      github: "https://github.com/xyzarnav/crypto-arbitrage-bot",
-      demoAvailable: false,
-      keyPoints: [
-        "500+ simulated trades",
-        "Real-time market data",
-        "10% test profit",
-      ],
-      description:
-        "High-frequency crypto trading bot exploiting price differences across exchanges, with real-time market data streaming and automated execution.",
-      featured: true,
-      status: "In Development",
-      date: "2024",
-    },
+   
     {
       title: "Tidey - Beach Cleanup Platform",
       category: "Web3",
@@ -217,13 +224,13 @@ const Projects = () => {
                           transition={{ duration: 0.3 }}
                         />
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
 
                       {/* Project Status */}
                       <div className="absolute top-4 right-4">
                         <span
                           className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
-                            project.status === "Completed"
+                            project.status !== "In Development"
                               ? "bg-neon-green/60 text-white border border-neon-green/80"
                               : "bg-neon-green/60 text-white border font-bold border-neon-cyan/80"
                           }`}
@@ -231,26 +238,115 @@ const Projects = () => {
                           {project.status}
                         </span>
                       </div>
+                    </div>
+                    {/* Project Content */}
+                    <div className="p-6 flex flex-col flex-grow">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-3">
+                          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                            {project.title}
+                          </h3>
+                          <span className="px-2 py-1 bg-neon-purple/20 text-neon-purple border border-neon-purple/30 rounded-full text-xs font-medium">
+                            {project.category}
+                          </span>
+                        </div>
+                        <span className="text-sm text-gray-600 dark:text-gray-400 flex items-center">
+                          <Calendar size={16} className="mr-1" />
+                          {project.date}
+                        </span>
+                      </div>
 
-                      {/* Hover Overlay */}
-                      {hoveredProject === index && (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          className="absolute inset-0 bg-black/40 flex items-center justify-center space-x-4"
-                        >
-                          {project.github && (
-                            <motion.a
-                              href={project.github}
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.9 }}
-                              className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors duration-200"
-                            >
-                              <Github size={24} />
-                            </motion.a>
-                          )}
-                        </motion.div>
+                      <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed flex-grow">
+                        {project.description}
+                      </p>
+
+                      {/* Tech Stack */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tech.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-3 py-1 bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20 rounded-full text-sm font-medium"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex space-x-4 mt-auto">
+                        {project.github && (
+                          <motion.a
+                            href={project.github}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex-1 px-4 py-2 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center justify-center space-x-2"
+                          >
+                            <Github size={18} />
+                            <span>Code</span>
+                          </motion.a>
+                        )}
+                        {project.demoAvailable && project.demo && (
+                          <motion.a
+                            href={project.demo}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex-1 px-4 py-2 bg-gradient-to-r from-neon-cyan to-neon-purple text-white rounded-lg font-medium hover:shadow-lg transition-all duration-200 flex items-center justify-center space-x-2"
+                          >
+                            <ExternalLink size={18} />
+                            <span>Demo</span>
+                          </motion.a>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              }
+              // Crypto Arbitrage Bot special handling
+              if (project.title === "Crypto Arbitrage Bot") {
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.2 }}
+                    onMouseEnter={() => setHoveredProject(index)}
+                    onMouseLeave={() => setHoveredProject(null)}
+                    className="group relative bg-white/10 dark:bg-black/10 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/20 dark:border-white/10 hover:border-white/30 dark:hover:border-white/20 transition-all duration-300 flex flex-col justify-between z-30"
+                    ref={arbitrageInViewRef}
+                  >
+                    {/* Project Video or Image */}
+                    <div className="relative h-64 overflow-hidden">
+                      {arbitrageInView ? (
+                        <iframe
+                          src="https://player.cloudinary.com/embed/?cloud_name=dnyrdbyes&public_id=CryptoApp_oljadf&profile=cld-default"
+                          allow="autoplay; fullscreen"
+                          allowFullScreen
+                          title="Crypto Arbitrage Bot"
+                          className="w-full h-full object-cover"
+                          style={{ border: 0 }}
+                        />
+                      ) : (
+                        <motion.img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.3 }}
+                        />
                       )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                      {/* Project Status */}
+                      <div className="absolute top-4 right-4">
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
+                            project.status !== "In Development"
+                              ? "bg-neon-green/60 text-white border border-neon-green/80"
+                              : "bg-neon-green/60 text-white border font-bold border-neon-cyan/80"
+                          }`}
+                        >
+                          {project.status}
+                        </span>
+                      </div>
                     </div>
                     {/* Project Content */}
                     <div className="p-6 flex flex-col flex-grow">
@@ -338,7 +434,7 @@ const Projects = () => {
                     <div className="absolute top-4 right-4">
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
-                          project.status === "Completed"
+                          project.status !== "In Development"
                             ? "bg-neon-green/60 text-white border border-neon-green/80"
                             : "bg-neon-cyan/90 text-white border font-bold border-neon-green/80"
                         }`}
@@ -346,25 +442,6 @@ const Projects = () => {
                         {project.status}
                       </span>
                     </div>
-                    {/* Hover Overlay */}
-                    {hoveredProject === index && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="absolute inset-0 bg-black/40 flex items-center justify-center space-x-4"
-                      >
-                        {project.github && (
-                          <motion.a
-                            href={project.github}
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors duration-200"
-                          >
-                            <Github size={24} />
-                          </motion.a>
-                        )}
-                      </motion.div>
-                    )}
                   </div>
 
                   {/* Project Content */}
@@ -449,13 +526,13 @@ const Projects = () => {
                       <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
                         {project.title}
                       </h4>
-                      <span className="px-1.9 py-0.3 mr-0.3 bg-neon-purple/20 text-neon-purple border border-neon-purple/30 rounded text-xs font-medium">
+                      <span className="px-2 py-2 mx-2  bg-neon-purple/20 text-neon-purple border border-neon-purple/30 rounded text-[11px]  whitespace-nowrap font-bold">
                         {project.category}
                       </span>
                     </div>
                     <span
-                      className={`px-2 py-1 rounded text-xs font-medium backdrop-blur-sm ${
-                        project.status === "Completed"
+                      className={`p-2 rounded text-xs font-medium backdrop-blur-sm ${
+                        project.status !== "In Development"
                           ? "bg-neon-green/40 text-neon-green border border-neon-green/50"
                           : "bg-neon-cyan/40 text-neon-cyan border border-neon-cyan/50"
                       }`}

@@ -5,7 +5,7 @@ import { Calendar, MapPin, GraduationCap, Award } from 'lucide-react';
 
 const About = () => {
   const { ref, inView } = useInView({
-    threshold: 0.3,
+    threshold: 0.15,
     triggerOnce: true,
   });
 
@@ -76,7 +76,7 @@ const About = () => {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
             className="space-y-8"
           >
             <div className="bg-white/10 dark:bg-black/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 dark:border-white/10">

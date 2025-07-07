@@ -117,7 +117,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white/95 dark:bg-black/95 backdrop-blur-md border-t border-white/20 dark:border-white/10"
+            className="md:hidden fixed top-16 left-0 right-0 z-50 bg-white/95 dark:bg-black/95 backdrop-blur-md border-t border-white/20 dark:border-white/10"
           >
             <div className="px-4 py-4 space-y-4">
               {navItems.map((item) => (
@@ -125,7 +125,10 @@ const Navbar = () => {
                   key={item.id}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => scrollToSection(item.id)}
+                  onClick={() => {
+                    scrollToSection(item.id);
+                    setIsOpen(false); // Ensure menu closes on click
+                  }}
                   className="w-full text-left text-gray-700 dark:text-gray-300 hover:text-neon-cyan dark:hover:text-neon-cyan transition-colors duration-200 flex items-center space-x-3 py-2"
                 >
                   <item.icon size={20} />
