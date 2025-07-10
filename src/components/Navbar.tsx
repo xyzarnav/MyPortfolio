@@ -32,7 +32,7 @@ const Navbar = () => {
       //   behavior: 'smooth'
       // });
     }
-    setIsOpen(false);
+    // setIsOpen(false);
   };
 
   const navItems = [
@@ -48,9 +48,9 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/10 dark:bg-black/10 backdrop-blur-md border-b border-white/20 dark:border-white/10' 
-          : 'bg-transparent'
+        scrolled
+          ? "bg-white/10 dark:bg-black/10 backdrop-blur-md border-b border-white/20 dark:border-white/10"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,21 +69,24 @@ const Navbar = () => {
                 key={item.id}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => {
+                  setIsOpen(false); // Close menu first
+                  setTimeout(() => scrollToSection(item.id), 100); // Then scroll after menu closes
+                }}
                 className="text-gray-700 dark:text-gray-300 hover:text-neon-cyan dark:hover:text-neon-cyan transition-colors duration-200 flex items-center space-x-2"
               >
                 <item.icon size={18} />
                 <span>{item.label}</span>
               </motion.button>
             ))}
-            
+
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleTheme}
               className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200"
             >
-              {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+              {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
             </motion.button>
           </div>
 
@@ -95,9 +98,9 @@ const Navbar = () => {
               onClick={toggleTheme}
               className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
             >
-              {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+              {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
             </motion.button>
-            
+
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -115,7 +118,7 @@ const Navbar = () => {
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden fixed top-16 left-0 right-0 z-50 bg-white/95 dark:bg-black/95 backdrop-blur-md border-t border-white/20 dark:border-white/10"
           >
@@ -126,8 +129,8 @@ const Navbar = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => {
-                    scrollToSection(item.id);
-                    setIsOpen(false); // Ensure menu closes on click
+                    setIsOpen(false); // Close menu first
+                    setTimeout(() => scrollToSection(item.id), 250); // Then scroll after menu closes
                   }}
                   className="w-full text-left text-gray-700 dark:text-gray-300 hover:text-neon-cyan dark:hover:text-neon-cyan transition-colors duration-200 flex items-center space-x-3 py-2"
                 >
