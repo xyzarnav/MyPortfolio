@@ -38,57 +38,18 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-start md:items-center justify-center relative overflow-hidden pt-28 md:pt-0"
     >
-      {/* Floating orbs */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -100, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full opacity-20 blur-xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, -150, 0],
-            y: [0, 100, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute top-3/4 right-1/4 w-48 h-48 bg-gradient-to-r from-neon-pink to-neon-purple rounded-full opacity-15 blur-xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, 80, 0],
-            y: [0, -80, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute top-1/2 right-1/3 w-24 h-24 bg-gradient-to-r from-neon-green to-neon-cyan rounded-full opacity-25 blur-xl"
-        />
-      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left md:text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8"
+          className="space-y-10 md:space-y-8 flex flex-col"
         >
           {/* Name and Title */}
-          <div className="space-y-4 relative flex flex-col items-center justify-center">
+          <div className="space-y-3 md:space-y-4 relative flex flex-col items-start md:items-center justify-center">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -107,7 +68,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-xl sm:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 font-light"
             >
-              Web3 Enthusiast & Full Stack Developer
+             AWS & Web3 Enthusiast |  Full Stack Developer
             </motion.p>
           </div>
 
@@ -116,7 +77,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed text-left md:text-center"
           >
             Passionate about creating beautiful, interactive user experiences
             and exploring the future of decentralized web technologies.
@@ -127,7 +88,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-16 md:mt-0"
           >
             <motion.a
               href={ResumePDf}
@@ -137,20 +98,20 @@ const Hero = () => {
                 boxShadow: "0 10px 30px rgba(0, 212, 255, 0.3)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-neon-cyan to-neon-purple text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
+              className="px-8 py-4 bg-black border border-gray-700 text-white font-semibold rounded-lg hover:bg-gray-900 transition-all duration-300 flex items-center space-x-2"
             >
               <Download size={20} />
               <span>Download Resume</span>
             </motion.a>
 
-            <motion.button
+            {/* <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={scrollToAbout}
               className="px-8 py-4 border-2 border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-white font-semibold rounded-full transition-all duration-300"
             >
               Learn More
-            </motion.button>
+            </motion.button> */}
           </motion.div>
 
           {/* Social Links */}
@@ -202,7 +163,7 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
           className="absolute left-1/2 transform -translate-x-1/2"
-          style={{ bottom: -140 }} // 32px from bottom, increase this value to move it further down
+          style={{ bottom: -80 }}
         >
           <motion.button
             onClick={scrollToAbout}

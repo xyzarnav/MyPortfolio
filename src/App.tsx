@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from './contexts/ThemeContext';
-import ParticleBackground from './components/ParticleBackground';
 import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
@@ -40,7 +39,6 @@ function App() {
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-light-bg dark:bg-dark-bg text-gray-900 dark:text-white transition-colors duration-300 relative">
-        <ParticleBackground />
         <CustomCursor />
         <ScrollProgress />
         <Navbar />
@@ -48,8 +46,9 @@ function App() {
         <main className="relative z-10">
           <Hero />
           <About />
-          <Skills />
+          
           <Projects />
+          <Skills />
         </main>
 
         <Footer />

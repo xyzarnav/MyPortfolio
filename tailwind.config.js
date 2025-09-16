@@ -18,7 +18,7 @@ export default {
           blue: "#3B82F6",
         },
         dark: {
-          bg: "#0A0A0F",
+          bg: "#000000",
           surface: "#1A1A2E",
           elevated: "#16213E",
         },

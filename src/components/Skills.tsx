@@ -12,13 +12,29 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: "Web3",
+      title: "Cloud & Web3",
       color: "from-neon-green to-neon-cyan",
       skills: [
+        {
+          name: "AWS S3",
+          level: 75,
+          description: "Cloud storage and static website hosting",
+        },
+        {
+          name: "AWS Lambda",
+          level: 70,
+          description: "Serverless computing for event-driven applications",
+        },
+       
         {
           name: "Ethereum",
           level: 70,
           description: "Smart contract interaction and DApp development",
+        },
+        {
+          name: "AWS DynamoDB",
+          level: 65,
+          description: "NoSQL database for key-value and document data",
         },
         {
           name: "Web3.js",
@@ -30,16 +46,7 @@ const Skills = () => {
           level: 70,
           description: "Smart contract development fundamentals",
         },
-        {
-          name: "Wagmi",
-          level: 50,
-          description: "Smart contract development Hooks",
-        },
-        {
-          name: "IPFS",
-          level: 45,
-          description: "Decentralized storage solutions",
-        },
+       
       ],
     },
     {
@@ -63,18 +70,19 @@ const Skills = () => {
           description: "Type-safe development and better code maintainability",
         },
         {
-          name: "HTML/CSS",
-          level: 95,
-          description: "Semantic markup and modern CSS features",
-        },
-        {
           name: "Tailwind CSS",
           level: 90,
           description: "Utility-first CSS framework for rapid UI development",
         },
         {
+          name: "Shadcn UI",
+          level: 55,
+          description: "Semantic markup and modern CSS features",
+        },
+        
+        {
           name: "Framer Motion",
-          level: 75,
+          level: 45,
           description: "Creating smooth animations and micro-interactions",
         },
       ],
@@ -87,6 +95,11 @@ const Skills = () => {
           name: "Node.js",
           level: 70,
           description: "Server-side JavaScript and REST API development",
+        },
+        {
+          name: "Express",
+          level: 70,
+          description: "Backend framework for building RESTful APIs",
         },
         {
           name: "Git",
@@ -109,6 +122,7 @@ const Skills = () => {
           level: 70,
           description: "Backend-as-a-service and real-time databases",
         },
+       
       ],
     },
   ];

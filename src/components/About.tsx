@@ -5,7 +5,7 @@ import { Calendar, MapPin, GraduationCap, Award } from 'lucide-react';
 
 const About = () => {
   const { ref, inView } = useInView({
-    threshold: 0.15,
+    threshold: 0.05,
     triggerOnce: true,
   });
 
@@ -35,9 +35,23 @@ const About = () => {
 
   const experience = [
     {
+      title: "Full Stack Developer",
+      company: "Rygneco (US-based E-waste Platform)",
+      period: "August 2025 – Present",
+      location: "Remote (Cincinnati, USA)",
+      description:
+        "Working on an innovative e-waste management platform, focusing on AWS infrastructure setup and backend development. Implementing cloud solutions using AWS SDK for efficient data processing and storage.",
+      achievements: [
+        "Set up AWS SDK integration for backend services",
+        "Implemented cloud storage solutions using S3",
+        "Developed secure authentication using Cognito",
+        "Contributed to scalable backend architecture"
+      ],
+    },
+    {
       title: "Web Developer Intern",
       company: "Vivekanand Education Society's Institute Of Technology (VESIT)",
-      period: "Jul 2024 – Present",
+      period: "Jul 2024 – May 2025",
       location: "Mumbai",
       description:
         "Developed and deployed responsive web pages using Laravel, JavaScript, PHP; optimized performance to reduce load time by 30% across mobile and desktop. Resolved PHP file upload issues, leading to 40% increase in successful submissions. Integrated basic CI/CD flow via GitHub Actions for automated deployment.",
@@ -65,7 +79,7 @@ const About = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            I'm a passionate frontend developer with a keen interest in Web3
+            I'm a passionate frontend developer with a keen interest in Cloud & Web3
             technologies, always eager to learn and build innovative solutions
             that push the boundaries of web development.
           </p>
